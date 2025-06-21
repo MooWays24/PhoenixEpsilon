@@ -3,43 +3,11 @@
   "version": "1.3.2",
   "productName": "PhoenixEpsilon",
   "description": "Two-way chat between Discord and Minecraft Bedrock",
-  "type": "module",
-  "private": true,
-  "devDependencies": {
-    "@nestjs/cli": "^11.0.5",
-    "@types/node": "22.10.1",
-    "archiver": "^7.0.1",
-    "bedrock-protocol": "3.43.0",
-    "cpy-cli": "^5.0.0",
-    "discord-api-types": "0.37.110",
-    "discord.js": "14.15.3",
-    "minecraft-data": "3.84.1",
-    "prettier": "3.4.2",
-    "rimraf": "^3.0.2",
-    "typescript": "5.7.2"
-  },
-  "prettier": {
-    "trailingComma": "es5",
-    "tabWidth": 4,
-    "useTabs": false,
-    "semi": true,
-    "printWidth": 250
-  },
-  "scripts": {
-    "format": "npx prettier --write --ignore-path .prettierignore ./",
-    "clean": "rimraf .build",
-    "prepare:dirs": "mkdir -p .build/bin",
-    "copy:bin": "cp -r bin/* .build/bin/ || true",
-    "copy:src-assets": "find src -name '*.json' -o -name '*.bat' | xargs -I{} cp {} .build/ || true",
-    "copy:root-files": "cp package.json local.env.example LICENSE README.md .build/ 2>/dev/null || true && cp .npmrc .build/ 2>/dev/null || true",
-    "build": "npm run clean && tsc -p tsconfig.json && npm run prepare:dirs && npm run copy:bin && npm run copy:src-assets && npm run copy:root-files && node modify-package.js",
-    "bundle": "npm run build && node bundle.js",
-    "release:patch": "npm version patch && npm run bundle",
-    "release:minor": "npm version minor && npm run bundle",
-    "release:major": "npm version major && npm run bundle",
-    "publish": "npm run bundle && gh release create v$npm_package_version --title \"PhoenixEpsilon v$npm_package_version\" --generate-notes ./dist/phoenixepsilon-v$npm_package_version.zip"
-  },
   "dependencies": {
-    "dotenv": "^16.4.7"
-  }
+    "bedrock-protocol": "github:PrismarineJS/bedrock-protocol",
+    "discord.js": "^14.19.3",
+    "dotenv": "^16.4.7",
+    "rimraf": "^6.0.1"
+  },
+  "type": "module"
 }
