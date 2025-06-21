@@ -13,3 +13,4 @@ dist/
 local.env
 .env
 logs/*
+*.bak
